@@ -1,21 +1,27 @@
 # ExpenseRegistration Flow
-
+ 
 ## 目的
-
-選択された経路情報を Excel に登録する。
-
+ 
+交通費情報をExcelへ登録する。
+ 
 ## 入力
-
-- usageDate
+ 
 - departureStation
 - arrivalStation
 - viaStation
+- usageDate
 - amount
 - routeType
-- memo
-
+ 
 ## 出力
-
+ 
 - registrationStatus
-- registeredRowId
-- errorMessage
+- rowId
+ 
+## 登録先
+ 
+SharePoint:
+交通費精算.xlsx
+ 
+テーブル:
+tblExpense
