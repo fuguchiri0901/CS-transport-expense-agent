@@ -1,38 +1,115 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RouteResponse",
-  "type": "object",
-  "properties": {
-    "cheapestRoute": {
-      "$ref": "#/$defs/route"
-    },
-    "fastestRoute": {
-      "$ref": "#/$defs/route"
-    },
-    "error": {
-      "type": "object",
-      "properties": {
-        "code": { "type": "string" },
-        "message": { "type": "string" }
-      }
-    }
-  },
-  "$defs": {
-    "route": {
-      "type": "object",
-      "properties": {
-        "routeType": { "type": "string" },
-        "amount": { "type": "number" },
-        "travelTimeMinutes": { "type": "number" },
-        "departureStation": { "type": "string" },
-        "arrivalStation": { "type": "string" },
-        "viaStations": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "description": { "type": "string" }
-      },
-      "required": ["routeType", "amount", "departureStation", "arrivalStation"]
-    }
-  }
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"title": "RouteResponse",
+"description": "交通費精算エージェントで利用する経路検索結果のレスポンス形式",
+"type": "object",
+"properties": {
+"cheapestRoute": {
+"$ref": "#/$defs/route",
+"description": "最安値経路"
+},
+"fastestRoute": {
+"$ref": "#/$defs/route",
+"description": "最短時間経路"
+},
+"message": {
+"type": "string",
+"description": "ユーザーに表示する補足メッセージ"
+},
+"error": {
+"$ref": "#/$defs/error",
+"description": "経路検索に失敗した場合のエラー情報"
+}
+},
+"required": [
+"cheapestRoute",
+"fastestRoute"
+],
+"additionalProperties": false,
+"$defs": {
+"route": {
+"type": "object",
+"properties": {
+"routeType": {
+"type": "string",
+"enum": [
+"cheapest",
+"fastest"
+],
+"description": "経路種別。cheapest は最安値経路、fastest は最短時間経路"
+},
+"departureStation": {
+"type": "string",
+"description": "出発駅"
+},
+"arrivalStation": {
+"type": "string",
+"description": "到着駅"
+},
+"viaStations": {
+"type": "array",
+"description": "経由駅の一覧",
+"items": {
+"type": "string"
+}
+},
+"departureTime": {
+"type": "string",
+"description": "出発時刻。例: 09:00"
+},
+"arrivalTime": {
+"type": "string",
+"description": "到着時刻。例: 09:45"
+},
+"travelTimeMinutes": {
+"type": "integer",
+"minimum": 0,
+"description": "所要時間。分単位"
+},
+"amount": {
+"type": "integer",
+"minimum": 0,
+"description": "運賃。円単位"
+},
+"routeSummary": {
+"type": "string",
+"description": "経路の概要説明"
+},
+"rawText": {
+"type": "string",
+"description": "経路探索結果の元テキスト。必要な場合のみ使用"
+}
+},
+"required": [
+"routeType",
+"departureStation",
+"arrivalStation",
+"amount",
+"travelTimeMinutes"
+],
+"additionalProperties": false
+},
+"error": {
+"type": "object",
+"properties": {
+"code": {
+"type": "string",
+"description": "エラーコード"
+},
+"message": {
+"type": "string",
+"description": "エラーメッセージ"
+},
+"details": {
+"type": "string",
+"description": "エラー詳細"
+}
+},
+"required": [
+"code",
+"message"
+],
+"additionalProperties": false
+}
+}
 }
