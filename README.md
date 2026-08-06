@@ -148,6 +148,16 @@ git push origin main
 - Power Automate Flow を変更したら `flows/` の README に入出力差分を記録する
 - 本番反映したら `releases/` にリリースノートを追加する
 
+## 入力
+- departureStation
+- arrivalStation
+- amount
+ 
+## 出力
+- rowID
+- status
+
+
 ## 現在のステータス
 
 | 項目 | 状態 |
