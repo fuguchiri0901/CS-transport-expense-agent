@@ -3,21 +3,44 @@
 ## 最安値金額の取得例
 
 ```powerfx
-Value(ParseJSON(Topic.routeJson).cheapestRoute.amount)
+Text(Value(ParseJSON(Topic.routeJson.text).cheapestRoute.amount))
 ```
 
-## 最短時間経路の説明取得例
+## 最安値ルートの取得例
 
 ```powerfx
-Text(ParseJSON(Topic.routeJson).fastestRoute.description)
+Text(ParseJSON(Topic.routeJson.text).cheapestRoute.route)
 ```
 
-## Null対策の考え方
+## 最安値到着時間の取得例
 
 ```powerfx
-If(
-    IsBlank(Topic.routeJson),
-    "経路情報が取得できていません",
-    Text(ParseJSON(Topic.routeJson).cheapestRoute.description)
-)
+Text(ParseJSON(Topic.routeJson.text).cheapestRoute.arrivalTime)
+```
+## 最安値ルートタイプの取得例
+
+```powerfx
+Text(ParseJSON(Topic.routeJson.text).cheapestRoute.routeType)
+```
+## 最短時間金額の取得例
+
+```powerfx
+Text(Value(ParseJSON(Topic.routeJson.text).fastestRoute.amount))
+```
+
+## 最短時間ルートの取得例
+
+```powerfx
+Text(ParseJSON(Topic.routeJson.text).fastestRoute.route)
+```
+
+## 最短時間到着時間の取得例
+
+```powerfx
+Text(ParseJSON(Topic.routeJson.text).fastestRoute.arrivalTime)
+```
+## 最短時間ルートタイプの取得例
+
+```powerfx
+Text(ParseJSON(Topic.routeJson.text).fastestRoute.routeType)
 ```
