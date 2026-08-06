@@ -1,0 +1,9 @@
+{
+  "usageDate": "2026-08-08",
+  "departureStation": "たまプラーザ",
+  "arrivalStation": "品川",
+  "viaStation": "渋谷",
+  "amount": 640,
+  "routeType": "cheapest",
+  "memo": "テストデータ"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouteResponse",
+  "type": "object",
+  "properties": {
+    "cheapestRoute": {
+      "$ref": "#/$defs/route"
+    },
+    "fastestRoute": {
+      "$ref": "#/$defs/route"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "route": {
+      "type": "object",
+      "properties": {
+        "routeType": { "type": "string" },
+        "amount": { "type": "number" },
+        "travelTimeMinutes": { "type": "number" },
+        "departureStation": { "type": "string" },
+        "arrivalStation": { "type": "string" },
+        "viaStations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "description": { "type": "string" }
+      },
+      "required": ["routeType", "amount", "departureStation", "arrivalStation"]
+    }
+  }
+}

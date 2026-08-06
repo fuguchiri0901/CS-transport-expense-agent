@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExpenseRequest",
+  "type": "object",
+  "properties": {
+    "usageDate": { "type": "string" },
+    "departureStation": { "type": "string" },
+    "arrivalStation": { "type": "string" },
+    "viaStation": { "type": "string" },
+    "amount": { "type": "number" },
+    "routeType": { "type": "string" },
+    "memo": { "type": "string" }
+  },
+  "required": ["usageDate", "departureStation", "arrivalStation", "amount", "routeType"]
+}

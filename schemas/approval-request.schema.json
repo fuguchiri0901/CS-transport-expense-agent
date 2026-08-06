@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApprovalRequest",
+  "type": "object",
+  "properties": {
+    "applicant": { "type": "string" },
+    "usageDate": { "type": "string" },
+    "amount": { "type": "number" },
+    "routeSummary": { "type": "string" },
+    "approvalStatus": { "type": "string" }
+  }
+}
